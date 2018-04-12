@@ -1,0 +1,49 @@
+group 'org.kxw'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+jar {
+    baseName = 'bms-parent'
+    version = '0.0.1-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//把JAR复制到目标目录
+task release(type: Copy) {
+    from('build/libs') {
+        include '*.jar'
+    }
+    from('deploy') {
+        include '*.sh'
+        include '*.yml'
+    }
+    into('target')
+}
+
+dependencies {
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
+
+    //thrift依赖
+    compile 'org.apache.thrift:libthrift:0.10.0'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

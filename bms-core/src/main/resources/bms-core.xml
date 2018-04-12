@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="org.kxw.bms.*"/>
+
+    <!--mango实例-->
+    <bean class="org.jfaster.mango.operator.Mango" factory-method="newInstance">
+        <property name="dataSourceFactory" ref="bms"/>
+    </bean>
+
+    <!-- 配置扫描使用@DB注解修饰的DAO类 -->
+    <bean class="org.jfaster.mango.plugin.spring.MangoDaoScanner">
+        <property name="packages">
+            <list>
+                <!-- 扫描包名 -->
+                <value>org.kxw.bms.dao</value>
+                <!-- <value>其他需要扫描的包</value> -->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="bms" class="org.jfaster.mango.datasource.SimpleDataSourceFactory">
+        <property name="name" value="bms"/>
+        <property name="dataSource">
+            <bean class="org.apache.commons.dbcp.BasicDataSource">
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/bms?useSSL=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="kxw672015"/>
+                <property name="defaultAutoCommit" value="true"/>
+                <property name="testWhileIdle" value="true"/>
+                <property name="testOnBorrow" value="false"/>
+                <property name="testOnReturn" value="false"/>
+                <property name="validationQuery" value="select 1 from dual"/>
+                <property name="validationQueryTimeout" value="1"/>
+                <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+                <property name="numTestsPerEvictionRun" value="20"/>
+            </bean>
+        </property>
+    </bean>
+
+
+</beans>
