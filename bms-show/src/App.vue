@@ -8,8 +8,7 @@
             </el-header>
             <el-container>
                 <el-aside width="200px">
-                    <el-menu :default-openeds="['1']"
-                             :default-active="defaultActive"
+                    <el-menu :default-active="defaultActive"
                              router>
                         <el-submenu index="1">
                             <template slot="title">
@@ -24,12 +23,20 @@
                         <el-submenu index="2">
                             <template slot="title">
                                 <i class="el-icon-menu"></i>
+                                <span>订单管理</span>
+                            </template>
+                            <el-menu-item index="2-1">商品管理</el-menu-item>
+                            <el-menu-item index="2-2">订单查询</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="3">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
                                 <span>统计报表</span>
                             </template>
-                            <el-menu-item index="1-1">用户统计</el-menu-item>
-                            <el-menu-item index="1-2">角色统计</el-menu-item>
-                            <el-menu-item index="1-3">分组统计</el-menu-item>
-                            <el-menu-item index="1-4">菜单统计</el-menu-item>
+                            <el-menu-item index="3-1">用户统计</el-menu-item>
+                            <el-menu-item index="3-2">角色统计</el-menu-item>
+                            <el-menu-item index="3-3">分组统计</el-menu-item>
+                            <el-menu-item index="3-4">菜单统计</el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </el-aside>

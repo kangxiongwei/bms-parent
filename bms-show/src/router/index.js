@@ -14,7 +14,12 @@ export default new Router({
         },
         {
             path: '/1-2',
-            name: '主页',
+            name: '用户列表',
+            component: UserList
+        },
+        {
+            path: '/2-1',
+            name: '用户统计',
             component: UserList
         }
     ]
