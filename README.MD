@@ -1,10 +1,9 @@
-#一、一个后台管理系统，可以随意扩展
+#一、后台管理系统
 
 ##环境搭建
 ```markdown
 1.安装NodeJS,在MacOS中，使用pkg安装。NodeJS网站：https://nodejs.org/en/
 2.安装angular-ui-grid，命令：npm install angular-ui-grid
-
 ```
 
 ##主要技术

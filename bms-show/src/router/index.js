@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import UserList from '../components/UserList.vue'
 import HelloWorld from '../components/HelloWorld.vue'
+import AxiosTest from '../components/AxiosTest.vue'
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ export default new Router({
             path: '/1-2',
             name: '用户列表',
             component: UserList
+        },
+        {
+            path: '/1-3',
+            name: '请求列表',
+            component: AxiosTest
         },
         {
             path: '/2-1',
