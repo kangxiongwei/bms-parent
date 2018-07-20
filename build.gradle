@@ -1,20 +1,29 @@
-group 'org.kxw'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE"
+    }
+}
 
 // 所有工程的通用配置
 allprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    group 'org.kxw.bms'
+    version '1.0.0'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-    group 'org.kxw'
-    version '1.0'
 
     repositories {
         mavenLocal()
-        jcenter()
         mavenCentral()
+        jcenter()
     }
 
     tasks.withType(JavaCompile) {
@@ -24,18 +33,6 @@ allprojects {
     dependencies {
         testCompile group: 'junit', name: 'junit', version: '4.12'
     }
-}
-
-//把JAR复制到目标目录
-task release(type: Copy) {
-    from('build/libs') {
-        include '*.jar'
-    }
-    from('deploy') {
-        include '*.sh'
-        include '*.yml'
-    }
-    into('target')
 }
 
 dependencies {

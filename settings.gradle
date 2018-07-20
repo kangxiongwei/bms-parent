@@ -5,4 +5,5 @@ include 'bms-order'
 include 'bms-stat'
 include 'bms-web'
 include 'bms-shiro'
+include 'bms-auth'
 
