@@ -34,7 +34,7 @@
                 </i-menu>
             </i-header>
             <i-layout style="padding: 0 50px; height: 100%; overflow-y: hidden">
-                <i-breadcrumb :style="{margin: '16px 0'}">
+                <i-breadcrumb :style="{margin: '5px 0'}">
                     <i-breadcrumb-item v-for="path in currentPath">{{path.title}}</i-breadcrumb-item>
                 </i-breadcrumb>
                 <i-content style="min-height: 100%; background: #fff; overflow-y: auto; padding-bottom: 70px">
