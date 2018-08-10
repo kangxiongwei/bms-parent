@@ -44,9 +44,7 @@
             </i-header>
             <i-layout :style="{padding: '0 50px', height: '100%'}">
                 <i-breadcrumb :style="{margin: '16px 0'}">
-                    <i-breadcrumb-item>Home</i-breadcrumb-item>
-                    <i-breadcrumb-item>Components</i-breadcrumb-item>
-                    <i-breadcrumb-item>Layout</i-breadcrumb-item>
+                    <i-breadcrumb-item v-for="path in currentPath">{{path.title}}</i-breadcrumb-item>
                 </i-breadcrumb>
                 <i-content :style="{padding: '24px 0', minHeight: '100%', background: '#fff'}">
                     <i-layout :style="{height: '100%'}">
@@ -94,10 +92,22 @@
             //从路由文件中获取菜单列表
             menuList() {
                 return this.$store.state.app.menuList;
+            },
+            //设置当前访问路径
+            currentPath() {
+                return this.$store.state.app.currentPath; // 当前面包屑数组
             }
         },
+        //初始化
         created() {
             this.$store.commit('setMenuList'); //初始化菜单列表
+            this.$store.commit('setCurrentPath', this.$route.path); //设置当前的导航
+        },
+        //监听页面跳转，自动设置导航
+        watch: {
+            '$route'(to) {
+                this.$store.commit('setCurrentPath', to.path); //设置当前的导航
+            }
         }
     }
 </script>

@@ -4,12 +4,7 @@ const app = {
     state: {
         routers: routers,
         //面包屑数组
-        currentPath: [
-            {
-                path: '',
-                name: '系统首页'
-            }
-        ],
+        currentPath: [],
         //菜单列表
         menuList: [],
         //登录用户
@@ -23,7 +18,28 @@ const app = {
     //Vuex的钩子，必须通过这里来修改全局变量
     mutations: {
         //修改currentPath
-        setCurrentPath(state, pathArr) {
+        setCurrentPath(state, path) {
+            let pathArr = [];
+            pathArr[0] = routers[0];
+            let index = 1;
+            //遍历第一层目录
+            for (let currentMenu of routers) {
+                if (currentMenu.path == null || currentMenu.path === '/' || currentMenu.path === '/home') {
+                    continue;
+                }
+                //遍历第二层目录
+                if (currentMenu.children != null) {
+                    for (let child of currentMenu.children) {
+                        if (child.path === path) {
+                            pathArr[index++] = currentMenu;
+                            pathArr[index++] = child;
+                            break;
+                        }
+                    }
+                }
+                //目前只支持三级导航，类似于：首页/权限管理/用户管理
+                if (index === 3) break;
+            }
             state.currentPath = pathArr;
         },
         //更新菜单列表

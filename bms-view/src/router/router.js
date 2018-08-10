@@ -82,22 +82,22 @@ const routers = [
         component: Layout,
         children: [
             {
-                path: '/product-store',
-                name: 'product-store',
+                path: '/bi-store',
+                name: 'bi-store',
                 title: '库存统计',
                 icon: 'planet',
                 component: (resolve) => require(['../views/product/ProductStore.vue'], resolve)
             },
             {
-                path: '/product-order',
-                name: 'product-order',
+                path: '/bi-order',
+                name: 'bi-order',
                 title: '订单统计',
                 icon: 'fireball',
                 component: (resolve) => require(['../views/product/ProductOrder.vue'], resolve)
             },
             {
-                path: '/product-refund',
-                name: 'product-refund',
+                path: '/bi-refund',
+                name: 'bi-refund',
                 title: '退款统计',
                 icon: 'flame',
                 component: (resolve) => require(['../views/product/ProductRefund.vue'], resolve)
