@@ -1,16 +1,14 @@
 import Vue from 'vue';
 import iView from 'iview';
 import VueRouter from 'vue-router';
-import Routers from './routers/router';
-import Vuex from 'vuex';
+import Routers from './router/router';
+import store from './store'
 import Util from './libs/util';
 import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 
 
 Vue.use(VueRouter);
-Vue.use(Vuex);
-
 Vue.use(iView);
 
 
@@ -31,15 +29,6 @@ router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
 });
-
-
-const store = new Vuex.Store({
-    state: {},
-    getters: {},
-    mutations: {},
-    actions: {}
-});
-
 
 new Vue({
     el: '#app',

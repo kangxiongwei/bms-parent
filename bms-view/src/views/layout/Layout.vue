@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .layout {
         border: 1px solid #d7dde4;
         background: #f5f7f9;
@@ -26,6 +26,12 @@
         position: relative;
         margin-top: -70px;
     }
+
+    .ivu-icon {
+        width: 14px;
+        height: 14px;
+    }
+
 </style>
 <template>
     <div class="layout">
@@ -44,34 +50,24 @@
                 </i-breadcrumb>
                 <i-content :style="{padding: '24px 0', minHeight: '100%', background: '#fff'}">
                     <i-layout :style="{height: '100%'}">
+                        <!--侧边栏-->
                         <i-sider hide-trigger :style="{background: '#fff'}">
-                            <i-menu active-name="1-2" theme="light" width="auto" :open-names="['1']"
-                                    @on-select="changeMenu">
-                                <i-submenu name="1">
-                                    <template slot="title">
-                                        <Icon type="ios-navigate"></Icon>
-                                        权限管理
-                                    </template>
-                                    <i-menu-item name="auth-user">用户管理</i-menu-item>
-                                    <i-menu-item name="auth-group">分组管理</i-menu-item>
-                                    <i-menu-item name="auth-rule">角色管理</i-menu-item>
-                                </i-submenu>
-                                <i-submenu name="2">
-                                    <template slot="title">
-                                        <Icon type="ios-keypad"></Icon>
-                                        Item 2
-                                    </template>
-                                    <i-menu-item name="2-1">Option 1</i-menu-item>
-                                    <i-menu-item name="2-2">Option 2</i-menu-item>
-                                </i-submenu>
-                                <i-submenu name="3">
-                                    <template slot="title">
-                                        <Icon type="ios-analytics"></Icon>
-                                        Item 3
-                                    </template>
-                                    <i-menu-item name="3-1">Option 1</i-menu-item>
-                                    <i-menu-item name="3-2">Option 2</i-menu-item>
-                                </i-submenu>
+                            <!--所有菜单-->
+                            <i-menu theme="light" width="auto" @on-select="changeMenu">
+                                <template v-for="item in menuList">
+                                    <!--有多个子菜单的菜单-->
+                                    <i-submenu v-if="item.children != null && item.children.length > 0"
+                                               :name="item.name" :key="item.name">
+                                        <template slot="title">
+                                            <i-icon v-if="item.icon != null" :type="item.icon"></i-icon>
+                                            {{item.title}}
+                                        </template>
+                                        <i-menu-item v-for="sub in item.children" :name="sub.name">
+                                            <i-icon v-if="sub.icon != null" :type="sub.icon"></i-icon>
+                                            {{sub.title}}
+                                        </i-menu-item>
+                                    </i-submenu>
+                                </template>
                             </i-menu>
                         </i-sider>
                         <i-content :style="{padding: '24px', minHeight: '100%', background: '#fff'}">
@@ -93,6 +89,15 @@
             changeMenu(name) {
                 this.$router.push(name);
             }
+        },
+        computed: {
+            //从路由文件中获取菜单列表
+            menuList() {
+                return this.$store.state.app.menuList;
+            }
+        },
+        created() {
+            this.$store.commit('setMenuList'); //初始化菜单列表
         }
     }
 </script>
