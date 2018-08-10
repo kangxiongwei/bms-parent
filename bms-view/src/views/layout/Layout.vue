@@ -18,15 +18,6 @@
         left: 20px;
     }
 
-    .layout-footer-center {
-        text-align: center;
-    }
-
-    .ivu-layout-footer {
-        position: relative;
-        margin-top: -70px;
-    }
-
     .ivu-icon {
         width: 14px;
         height: 14px;
@@ -42,12 +33,12 @@
                     <p style="color: white; position: relative; left: 30px; float: left; font-size: 24px">BMS管理系统</p>
                 </i-menu>
             </i-header>
-            <i-layout :style="{padding: '0 50px', height: '100%'}">
+            <i-layout style="padding: 0 50px; height: 100%; overflow-y: hidden">
                 <i-breadcrumb :style="{margin: '16px 0'}">
                     <i-breadcrumb-item v-for="path in currentPath">{{path.title}}</i-breadcrumb-item>
                 </i-breadcrumb>
-                <i-content :style="{padding: '24px 0', minHeight: '100%', background: '#fff'}">
-                    <i-layout :style="{height: '100%'}">
+                <i-content style="min-height: 100%; background: #fff; overflow-y: auto; padding-bottom: 70px">
+                    <i-layout style="height: 100%;">
                         <!--侧边栏-->
                         <i-sider hide-trigger :style="{background: '#fff'}">
                             <!--所有菜单-->
@@ -68,13 +59,15 @@
                                 </template>
                             </i-menu>
                         </i-sider>
-                        <i-content :style="{padding: '24px', minHeight: '100%', background: '#fff'}">
+                        <i-content :style="{padding: '5px', minHeight: '100%', background: '#fff'}">
                             <router-view></router-view>
                         </i-content>
                     </i-layout>
                 </i-content>
             </i-layout>
-            <i-footer class="layout-footer-center">2011-2099 &copy; kangxiongwei@163.com</i-footer>
+            <i-footer style="text-align: center">
+                2018~2099 &copy; kangxiongwei@163.com
+            </i-footer>
         </i-layout>
     </div>
 </template>
