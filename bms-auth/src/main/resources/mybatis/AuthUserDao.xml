@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kxw.bms.auth.dao.AuthUserDao">
+
+    <resultMap id="resultMap" type="org.kxw.bms.auth.entity.AuthUserEntity">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="nickname" column="nickname"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="headImg" column="head_img"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+    <insert id="saveUser" keyProperty="entity.id">
+        INSERT INTO bms_auth_user(username, nickname, password, mobile, email, head_img, create_time, update_time)
+        VALUES (#{entity.username},
+                #{entity.nickname},
+                #{entity.password},
+                #{entity.mobile},
+                #{entity.email},
+                #{entity.headImg},
+                #{entity.createTime},
+                #{entity.updateTime})
+    </insert>
+
+    <select id="listAuthUsers" resultMap="resultMap">
+        SELECT *
+        FROM bms_auth_user;
+    </select>
+
+</mapper>

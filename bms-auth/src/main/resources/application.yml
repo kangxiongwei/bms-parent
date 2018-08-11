@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 logging:
   level:
@@ -10,3 +10,21 @@ logging:
 spring:
   thymeleaf:
     cache: false
+  config:                  #配置文件目录
+    location: /config/
+  profiles:                #分环境，java -jar --spring.profiles.active=prod激活
+    active: dev
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: org.kxw.bms.auth.engity
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    default-executor-type: simple
+    default-statement-timeout: 25000
+    map-underscore-to-camel-case: true
+    use-generated-keys: true

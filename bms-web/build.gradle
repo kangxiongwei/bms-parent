@@ -4,4 +4,9 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
     //依赖权限模块
     compile project(":bms-auth")
+
+    compile 'org.springframework.boot:spring-boot-starter-aop'
+
+    compile 'com.alibaba:fastjson:1.2.49'
+
 }

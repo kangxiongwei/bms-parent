@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+spring:
+  config:                  #配置文件目录
+    location: /config/
+  profiles:                #分环境，java -jar --spring.profiles.active=prod激活
+    active: dev
