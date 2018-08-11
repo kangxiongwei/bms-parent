@@ -1,5 +1,7 @@
 package org.kxw.bms.web.model;
 
+import org.kxw.bms.web.constant.ResponseConstants;
+
 /**
  * Create by kangxiongwei on 2018/8/11 下午12:56
  */
@@ -25,6 +27,16 @@ public class HttpBaseResult {
     public HttpBaseResult(Integer code, Object data) {
         this.code = code;
         this.data = data;
+    }
+
+    public HttpBaseResult(Integer code, String message, Object data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static HttpBaseResult buildSuccess(Object data) {
+        return new HttpBaseResult(OK, ResponseConstants.OK_MSG, data);
     }
 
     public Integer getCode() {

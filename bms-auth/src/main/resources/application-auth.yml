@@ -1,0 +1,13 @@
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: org.kxw.bms.auth.entity
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    default-executor-type: simple
+    default-statement-timeout: 25000
+    map-underscore-to-camel-case: true
+    use-generated-keys: true

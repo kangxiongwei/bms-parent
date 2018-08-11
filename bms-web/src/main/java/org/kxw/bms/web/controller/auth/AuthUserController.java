@@ -29,8 +29,9 @@ public class AuthUserController {
      */
     @RestfulApi
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)
-    public Long saveUser(@RequestBody AuthUserView user) {
-        return this.authUserService.saveUser(user);
+    public HttpBaseResult saveUser(@RequestBody AuthUserView user) {
+        Long id = this.authUserService.saveUser(user);
+        return HttpBaseResult.buildSuccess(id);
     }
 
     /**
@@ -42,7 +43,7 @@ public class AuthUserController {
     @RequestMapping("/user/list")
     public HttpBaseResult listAuthUsers() {
         List<AuthUserView> list = this.authUserService.listAuthUsers();
-        return new HttpBaseResult(HttpBaseResult.OK, list);
+        return HttpBaseResult.buildSuccess(list);
     }
 
 }
