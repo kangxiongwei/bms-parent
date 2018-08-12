@@ -14,3 +14,6 @@ deploy:
   keep-history: true
   on:
     branch: master
+
+script:
+- 'sh deploy.sh'
