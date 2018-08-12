@@ -15,3 +15,14 @@ dependencies {
     compileOnly("org.springframework.boot:spring-boot-devtools")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+//打开jar的task，否则jar被禁用
+jar {
+    enabled = true
+}
+
+//打包一个可执行的jar包，可以单独运行
+//将可执行的jar和正常的jar名字分开
+bootJar {
+    classifier = 'boot'
+}
