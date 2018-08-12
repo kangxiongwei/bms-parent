@@ -40,3 +40,13 @@ allprojects {
         testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }
+
+task deploy(type: Copy) {
+    from('bms-web/build/libs') {
+        include '*.jar'
+    }
+    from('.') {
+        include '*.sh'
+    }
+    into('build/target')
+}

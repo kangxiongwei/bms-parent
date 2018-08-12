@@ -15,3 +15,17 @@ dependencies {
 bootJar {
     mainClassName = 'org.kxw.bms.web.BmsApplication'
 }
+
+task viewCopy(type: Sync) {
+    from('../bms-view/') {
+        include('dist/*')
+        include('index_prod.html')
+    }
+    into('src/main/resources/static')
+    rename { String fileName ->
+        fileName.replace('index_prod.html', 'index.html')
+    }
+}
+
+//依赖拷贝前端代码到本地
+jar.dependsOn viewCopy

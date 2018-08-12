@@ -1,8 +1,9 @@
 .idea/
 .gradle/
 build/
-!bms-show/build/
 out/
 target/
 
 *.iml
+
+bms-web/src/main/resources/static
