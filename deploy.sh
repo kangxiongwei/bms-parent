@@ -2,7 +2,7 @@
 
 gradle clean build -x test --stacktrace -i
 gradle deploy
-java -jar build/target/bms-web-1.0.0.jar --spring.profiles.active=prod
+java -jar build/target/bms-web-1.0.0.jar --spring.profiles.active=prod &
 
 WAIT_SECONDS=50
 k=1
