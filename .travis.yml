@@ -6,6 +6,11 @@ jdk:
 services:
 - mysql
 
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+
 branches:
   only:
   - master
