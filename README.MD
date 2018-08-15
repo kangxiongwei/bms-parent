@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.org/kangxiongwei/bms-parent.svg?branch=master)](https://www.travis-ci.org/kangxiongwei/bms-parent)
+
 #一、后台管理系统
 
 ##环境搭建
